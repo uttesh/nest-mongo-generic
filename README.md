@@ -7,6 +7,7 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript + MongoDB starter repository.
+Implemented the base controller and service to avoid the CRUD related duplication code and made generic controller and service implementaitons
 
 ## Installation
 
