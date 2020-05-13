@@ -1,4 +1,4 @@
-import { Controller, Get, Res, HttpStatus, Post, Body, Put, Query, NotFoundException, Delete, Param } from '@nestjs/common';
+import { Get, Res, HttpStatus, Post, Body, Put, Query, NotFoundException, Delete, Param } from '@nestjs/common';
 import { IBaseService } from './IBase.service'
 import { BaseEntity } from './base.entity';
 
