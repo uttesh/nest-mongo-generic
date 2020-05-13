@@ -33,7 +33,7 @@ export class UserController {
 
     @Put(':id')
     async update(@Res() res, @Query('id') id, @Body() user: User) {
-        const customer = await this.userService.update(id, user);
+        const customer = await this.userService.update(user);
         if (!customer) {
           throw new NotFoundException('User does not exist!');
         } 
