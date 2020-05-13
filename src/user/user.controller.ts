@@ -1,18 +1,18 @@
 import { Controller, Get, Res, HttpStatus, Post, Body, Put, Query, NotFoundException, Delete, Param } from '@nestjs/common';
 import { UserService } from './user.service';
-import { User } from './user';
+import { User } from './user.model';
 
 @Controller('user')
 export class UserController {
     constructor(private userService: UserService) { }
 
-    @Get('/')
+    @Get()
     async getAll(@Res() res) {
         const users = await this.userService.findAll();
         return res.status(HttpStatus.OK).json(users);
     }
 
-    @Get('/:id')
+    @Get(':id')
     async getCustomer(@Res() res, @Param('id') userid) {
         const user = await this.userService.get(userid);
         if (!user){
@@ -22,7 +22,7 @@ export class UserController {
 
     }
 
-    @Post('/')
+    @Post()
     async add(@Res() res, @Body() user: User) {
         const updatedUser = await this.userService.create(user);
         return res.status(HttpStatus.OK).json({
@@ -31,7 +31,7 @@ export class UserController {
         });
     }
 
-    @Put('/')
+    @Put(':id')
     async update(@Res() res, @Query('id') id, @Body() user: User) {
         const customer = await this.userService.update(id, user);
         if (!customer) {
@@ -44,7 +44,7 @@ export class UserController {
     }
 
     // Delete a customer
-    @Delete('/delete')
+    @Delete(':id')
     async deleteCustomer(@Res() res, @Query('id') id) {
         const customer = await this.userService.delete(id);
         if (!customer) {
